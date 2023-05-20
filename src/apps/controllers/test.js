@@ -3,47 +3,22 @@ const ProductModel = require("../models/product");
 const UserModel = require("../models/user");
 
 const test = async (req, res) => {
-
-    // const users = await UserModel.find();
-    // console.log(users);
-    // const categories = await CategoryModel.find();
-    // const products = await ProductModel.find();
-
-    // console.log(categories.length + products.length);
-
-    // const str = "Welcome ";
-
-    // const promise = new Promise((res, rej) => {
-    //     setTimeout(() => {
-    //         res(str + "NodeJS")
-    //     }, 3000)
-    // })
-    // promise.then((result) => {
-    //     console.log(result);
-    // })
-
-    // const category = {
-    //     description: "BPhone description",
-    //     title: "Test BPhone",
-    //     slug: "bphone",
-    // }
-    // new CategoryModel(category).save();
-
-    // CategoryModel.deleteMany({ title: "Test BPhone" }, (err, docs) => {
-    //     console.log(docs);
-    // })
-
-    // ProductModel.find().populate({ path: "cat_id" }).exec((err, docs) => {
-    //     console.log(docs);
-    // });
-
+	req.session.email = "hieudeu1xx1@gmail.com"
+};
+const test1 = (req, res) => {
+	if (req.session.email) {
+		res.send("send defined")
+	} else {
+		res.send("send not defined")
+	}
 };
 
 const test2 = (req, res) => {
-    res.send(req.body.email);
+	res.session.destroy()
 };
 
 module.exports = {
-    test: test,
-    test2: test2
+	test: test,
+	test1: test1,
+	test2: test2
 }
